@@ -140,14 +140,30 @@ add_action( 'widgets_init', 'dubravushka_widgets_init' );
  * Enqueue scripts and styles.
  */
 function dubravushka_scripts() {
-	wp_enqueue_style( 'dubravushka-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'dubravushka-style', 'rtl', 'replace' );
+    wp_enqueue_style( 'dubravushka-main-style', get_template_directory_uri() . '/css/main.css', [], _S_VERSION );
+	wp_enqueue_style( 'dubravushka-style', get_stylesheet_uri(), [], _S_VERSION );
 
-	wp_enqueue_script( 'dubravushka-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+    if ( ! is_admin() ) {
+        wp_deregister_script( 'jquery' );
+    }
+    wp_enqueue_script( 'dubravushka-jquery', get_template_directory_uri() . '/js/jquery.min.js', [], '2.2.4', true );
+    wp_enqueue_script( 'dubravushka-yii', get_template_directory_uri() . '/js/yii.js', [], '2', true );//TODO Проверить сайт без этого скрипта
+    wp_enqueue_script( 'dubravushka-libraries', get_template_directory_uri() . '/js/libraries.js', [], _S_VERSION, true );
+    wp_enqueue_script( 'dubravushka-lightbox', get_template_directory_uri() . '/js/lightbox.js', [], '2.9.0', true );
+    wp_enqueue_script( 'dubravushka-jquery-validate', get_template_directory_uri() . '/js/jquery.validate.min.js', [], '1.17.0', true );
+    wp_enqueue_script( 'dubravushka-jquery-cookie', get_template_directory_uri() . '/js/jquery.cookie.js', [], '1.4.1', true );
+    wp_enqueue_script( 'dubravushka-jquery-lazy', get_template_directory_uri() . '/js/jquery.lazy.min.js', [], '1.7.10', true );
+    wp_enqueue_script( 'dubravushka-main', get_template_directory_uri() . '/js/main.js', [], _S_VERSION, true );
+    wp_enqueue_script( 'dubravushka-yii-validation', get_template_directory_uri() . '/js/yii.validation.js', [], _S_VERSION, true );
+    wp_enqueue_script( 'dubravushka-yii-activeform', get_template_directory_uri() . '/js/yii.activeForm.js', [], _S_VERSION, true );
+
+	/*wp_style_add_data( 'dubravushka-style', 'rtl', 'replace' );
+
+	/wp_enqueue_script( 'dubravushka-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
-	}
+	}*/
 }
 add_action( 'wp_enqueue_scripts', 'dubravushka_scripts' );
 

@@ -9,51 +9,196 @@
  * @package Dubravushka
  */
 
+$scripts_head = get_field('scripts_head', 'option');
+$scripts_body = get_field('scripts_body', 'option');
+$head_title = get_field('head_titile', 'option');
+$phone = get_field('phone', 'option');
+$logo = get_field('logo', 'option');
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-	<?php wp_head(); ?>
+    <?php
+    wp_head();
+    echo $scripts_head;
+    ?>
 </head>
 
 <body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
+<?php
+wp_body_open();
+echo $scripts_body;
+?>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'dubravushka' ); ?></a>
+    <header class="header">
+        <div class="topbar-wrapper">
+            <div class="container-fluid custom-padding">
+                <div class="topbar">
+                    <div class="topbar__content"><?php echo $head_title; ?></div>
+                    <div class="topbar__search-wrapper">
+                        <!-- <a href="/general" class="topbar__uk-flag pull-right"><img src="/images/flags/uk.png" alt="uk-flag"></a> -->
+                        <a class="topbar__phone google__phone"
+                           href="tel:<?php echo $phone; ?>"
+                           onclick="clickTarget('header')">
+                            <?php echo $phone; ?>
+                        </a>
+                        <!-- TODO WP search form -->
+                        <div class="topbar__input ya-site-form ya-site-form_inited_no"
+                             onclick="return {'action':'https://dubravushka.ru','arrow':false}">
+                            <form id="w0" action="/" method="post">
+                                <input type="hidden" name="_csrf"
+                                       value="Ok_XsPbSa-V440uNXZ41dlZp5GTs4Z-vkh7yXORV2PJrKqThv7ooqi6FLekZwWc1HlGlBdSL99e_dYs7lBe6qw==">
+                                <input type="hidden" id="search-searchid" name="Search[searchid]" value="2293373">
+                                <input type="hidden" id="search-l10n" name="Search[l10n]" value="ru"> <input
+                                        type="hidden" id="search-reqenc" name="Search[reqenc]" value="">
+                                <input type="text" id="search-text" class="topbar__search" name="Search[text]"
+                                       placeholder="Поиск" aria-required="true">
+                                <button type="submit" class="topbar__search-btn"
+                                        onclick="clickTarget(&quot;topSearch&quot;)">
+                                    Поиск
+                                </button>
+                            </form>
+                        </div>
+                        <script type="text/javascript">
+                            (function (w, d, c) {
+                                var s = d.createElement('script'), h = d.getElementsByTagName('script')[0],
+                                    e = d.documentElement;
+                                if ((' ' + e.className + ' ').indexOf(' ya-page_js_yes ') === -1) {
+                                    e.className += ' ya-page_js_yes';
+                                }
+                                s.type = 'text/javascript';
+                                s.async = true;
+                                s.charset = 'utf-8';
+                                s.src = (d.location.protocol === 'https:' ? 'https:' : 'http:') + '//site.yandex.net/v2.0/js/all.js';
+                                h.parentNode.insertBefore(s, h);
+                                (w[c] || (w[c] = [])).push(function () {
+                                    Ya.Site.Form.init()
+                                })
+                            })(window, document, 'yandex_site_callbacks');
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$dubravushka_description = get_bloginfo( 'description', 'display' );
-			if ( $dubravushka_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $dubravushka_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'dubravushka' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid custom-padding padding-right-0">
+                <!-- Brand and toggle get grouped for better mobile display-->
+                <div class="navbar-header">
+                    <!--<a href="/general" class="navbar__uk-flag"
+                        <img src="<?php //echo $phone; ?>/images/flags/uk-38.png" alt="uk-flag">
+                    </a>-->
+                    <button class="navbar-toggle collapsed"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#navbar-collapse"
+                            aria-expanded="false"
+                    >
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggle__sign">Меню</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img class="navbar-logo navbar-logo_mob-hide" src="<?php echo $logo; ?>" alt="Logo">
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling-->
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <!-- TODO WP search form -->
+                    <form action="/site/search/" method="get" target="_self" class="serch-wrapper"
+                          accept-charset="utf-8">
+                        <input type="hidden" name="searchid" value="2293373">
+                        <input type="hidden" name="l10n" value="ru">
+                        <input type="hidden" name="reqenc" value="">
+                        <input class="topbar__search topbar__search_in-burger" type="search" name="text"
+                               placeholder="Поиск"
+                               value="">
+                        <button class="search-btn">Поиск</button>
+                    </form>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#">О школе</a>
+                            <span class="caret"
+                                  data-toggle="dropdown"
+                                  role="button"
+                                  aria-haspopup="true"
+                                  aria-expanded="false">
+                            </span>
+                            <ul class="dropdown-menu">
+                                <li><a href="/founders">Слово основателя школы</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#">Образование</a>
+                            <span class="caret"
+                                  data-toggle="dropdown"
+                                  role="button"
+                                  aria-haspopup="true"
+                                  aria-expanded="false">
+                            </span>
+                            <ul class="dropdown-menu">
+                                <li><a href="/kursy-angliiskogo">Короткие курсы английского</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#">Пансион</a>
+                            <span class="caret"
+                                  data-toggle="dropdown"
+                                  role="button"
+                                  aria-haspopup="true"
+                                  aria-expanded="false">
+                            </span>
+                            <ul class="dropdown-menu">
+                                <li><a href="/living-conditions">Условия проживания</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#">Новости</a>
+                            <span class="caret"
+                                  data-toggle="dropdown"
+                                  role="button"
+                                  aria-haspopup="true"
+                                  aria-expanded="false">
+                            </span>
+                            <ul class="dropdown-menu">
+                                <li><a href="/news/interesnoye">Интересное</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#">Поступление</a>
+                            <span class="caret"
+                                  data-toggle="dropdown"
+                                  role="button" aria-haspopup="true"
+                                  aria-expanded="false">
+                            </span>
+                            <ul class="dropdown-menu">
+                                <li><a href="/conditions">Условия поступления</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#">Летний лагерь</a>
+                            <span class="caret"
+                                  data-toggle="dropdown"
+                                  role="button"
+                                  aria-haspopup="true"
+                                  aria-expanded="false">
+                            </span>
+                            <ul class="dropdown-menu">
+                                <li><a href="/camp-podmoskovie">Лагерь в Подмосковье</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="/contacts">Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
