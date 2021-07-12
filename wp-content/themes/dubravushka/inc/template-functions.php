@@ -51,3 +51,31 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 /****************************************************
  * Theme Settings
  *****************************************************/
+
+/****************************************************
+ * Custom Post Types
+ *****************************************************/
+function dubravushka_register_my_cpts() {
+
+    /**
+     * Post Type: Отзывы.
+     */
+
+    $args = [
+        'label' => 'Отзывы',
+        'labels' => [
+            'name' => 'Отзывы',
+            'singular_name' => 'Отзыв',
+        ],
+        'public' => true,
+        'menu_icon' => 'dashicons-format-quote',
+        'supports' => [ 'title' ],
+    ];
+
+    register_post_type( 'review', $args );
+}
+
+add_action( 'init', 'dubravushka_register_my_cpts' );
+/****************************************************
+ * Custom Post Types
+ *****************************************************/

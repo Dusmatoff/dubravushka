@@ -18,6 +18,22 @@ $booking = get_field('booking');
 
 $about = get_field('about');
 $id_youtube = get_field('id_youtube');
+
+$icons_title = get_field('icons_title');
+
+$reviews_title = get_field('reviews_title');
+$review_btn_text = get_field('review_btn_text');
+$review_btn_link = get_field('review_btn_link');
+$reviews_list = get_field('reviews_list');
+
+$prof_title = get_field('prof_title');
+
+$quote_image = get_field('quote_image');
+$quote_text = get_field('quote_text');
+$quote_author = get_field('quote_author');
+
+$leisure_title = get_field('leisure_title');
+$leisure_subtitle = get_field('leisure_subtitle');
 ?>
     <div class="index-top-content">
         <div class="content-img"
@@ -55,9 +71,9 @@ $id_youtube = get_field('id_youtube');
         <div class="class-list">
             <ul>
                 <?php
-                while ( have_rows( 'feature_list' ) ) :
+                while (have_rows('feature_list')) :
                     the_row();
-                    $text = get_sub_field( 'text' );
+                    $text = get_sub_field('text');
                     ?>
                     <li><?php echo $text; ?></li>
                 <?php endwhile; ?>
@@ -84,327 +100,203 @@ $id_youtube = get_field('id_youtube');
         </div>
     </div>
 
+<?php if (have_rows('statistic')): ?>
     <div class="container global">
         <div class="numbers">
-            <div class="col-md-4 item">
-                <div class="item-heading"><a href="http://dubravushka.ru/english">6</a></div>
-
-                <div class="hr-line">&nbsp;</div>
-
-                <div class="main-text">изучаемых иностранных языков</div>
-            </div>
-
-            <div class="col-md-4 item">
-                <div class="item-heading"><a href="http://dubravushka.ru/extracurriculum">39</a></div>
-
-                <div class="hr-line">&nbsp;</div>
-
-                <div class="main-text">секций и кружков в школе</div>
-            </div>
-
-            <div class="col-md-4 item">
-                <div class="item-heading"><a href="http://dubravushka.ru/geography">58</a></div>
-
-                <div class="hr-line">&nbsp;</div>
-
-                <div class="main-text">российских городов, откуда приехали наши ученики</div>
-            </div>
-
-            <div class="col-md-4 item">
-                <div class="item-heading"><a href="http://dubravushka.ru/exams">67</a></div>
-
-                <div class="hr-line">&nbsp;</div>
-
-                <div class="main-text">призёров олимпиад различного уровня в 2018-2019 учебном году</div>
-            </div>
+            <?php
+            while (have_rows('statistic')) :
+                the_row();
+                $link = get_sub_field('link');
+                $number = get_sub_field('number');
+                $text = get_sub_field('text');
+                ?>
+                <div class="col-md-4 item">
+                    <div class="item-heading">
+                        <a href="<?php echo $link; ?>">
+                            <?php echo $number; ?>
+                        </a>
+                    </div>
+                    <div class="hr-line">&nbsp;</div>
+                    <div class="main-text"><?php echo $text; ?></div>
+                </div>
+            <?php endwhile; ?>
         </div>
     </div>
+<?php endif; ?>
+
     <div class="container global">
         <div class="harmonious">
             <div class="blocks-sections">
                 <div class="section__container">
-                    <p class="section__title"><span style="font-size:24px">Школа-пансион &laquo;Дубравушка&raquo; создана 30 лет назад как комплексное учебное заведение, сочетающее все преимущества среднего образования, разностороннего дополнительного обучения и комфортного самостоятельного проживания </br></span>
-                        <!-- Мы ждем учеников из любого региона России и мира--></p>
+                    <p class="section__title">
+                        <span style="font-size:24px">
+                            <?php echo $icons_title; ?></br>
+                        </span>
+                        <!-- Мы ждем учеников из любого региона России и мира-->
+                    </p>
                 </div>
-
-                <div class="blocks-sections-container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="section-img"><img src="/files/1-проживание-2.png"/></div>
-
-                            <div class="section-title">Комфортное проживание</div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="right-line">&nbsp;</div>
-
-                            <div class="section-img"><img src="/files/2-питание.png"/></div>
-
-                            <div class="section-title">Здоровое и разнообразное питание</div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="right-line">&nbsp;</div>
-
-                            <div class="section-img"><img src="/files/3-куратор.png"/></div>
-
-                            <div class="section-title">Индивидуальный куратор и психологическое сопровождение</div>
+                <?php if (have_rows('icons_list')): ?>
+                    <div class="blocks-sections-container">
+                        <div class="row">
+                            <?php
+                            while (have_rows('icons_list')) :
+                                the_row();
+                                $image = get_sub_field('image');
+                                $text = get_sub_field('text');
+                                ?>
+                                <div class="col-md-4">
+                                    <div class="section-img">
+                                        <img src="<?php echo $image; ?>"/>
+                                    </div>
+                                    <div class="section-title">
+                                        <?php echo $text; ?>
+                                    </div>
+                                </div>
+                            <?php endwhile; ?>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="section-img"><img src="/files/4- медицина-2.png"/></div>
-
-                            <div class="section-title">Круглосуточное медицинское обслуживание</div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="right-line">&nbsp;</div>
-
-                            <div class="section-img"><img src="/files/5-театр.png"/></div>
-
-                            <div class="section-title">Театральная студия, творческие занятия</div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="right-line">&nbsp;</div>
-
-                            <div class="section-img"><img src="/files/6.png"/></div>
-
-                            <div class="section-title">Постоянная связь с родителями</div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="section-img"><img src="/files/7-досуг-2.png"/></div>
-
-                            <div class="section-title">Разнообразный досуг</div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="right-line">&nbsp;</div>
-
-                            <div class="section-img"><img src="/files/8.png"/></div>
-
-                            <div class="section-title">Большая охраняемая территория</div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="right-line">&nbsp;</div>
-
-                            <div class="section-img"><img src="/files/9-классы.png"/></div>
-
-                            <div class="section-title">Классы до 16 человек</div>
-                        </div>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
+
     <div class="container global">
         <div class="reviews">
-            <div class="section-title">Отзывы учеников и родителей о
-                <strong>&laquo;</strong>Дубравушке<strong>&raquo;</strong></div>
-
+            <div class="section-title">
+                <?php echo $reviews_title; ?>
+            </div>
             <div class="section-container">
                 <div class="row">
                     <div class="col-md-2">&nbsp;</div>
-
-                    <div class="col-md-4">
-                        <div class="section-img">
-                            <div class="youtube" id="uFYG_gW0MLg" style="width:375px;height:210px;">&nbsp;</div>
+                    <?php foreach ($reviews_list as $item): ?>
+                        <div class="col-md-4">
+                            <div class="section-img">
+                                <div class="youtube" id="<?php the_field('youtube_id', $item->ID) ?>"
+                                     style="width:375px;height:210px;">&nbsp;
+                                </div>
+                            </div>
+                            <div class="wrapper">
+                                <div class="bottom-line">&nbsp;</div>
+                                <div class="text-name">
+                                    <strong>
+                                        <?php echo $item->post_title; ?>
+                                    </strong>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="wrapper">
-                            <div class="bottom-line">&nbsp;</div>
-
-                            <div class="text-name"><strong>Отзывы учеников: Здесь великолепная подготовка к экзаменам
-                                    (г. Сочи)</strong></div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="section-img">
-                            <div class="youtube" id="2Vyg7-5dy64" style="width:375px;height:210px;">&nbsp;</div>
-                        </div>
-
-                        <div class="wrapper">
-                            <div class="bottom-line">&nbsp;</div>
-
-                            <div class="text-name"><strong>Отзывы родителей: В &laquo;Дубравушке&raquo; учат детей
-                                    учиться (г. Киров)</strong></div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
-                <a class="look-all" href="http://dubravushka.ru/reviews">Смотреть все отзывы</a></div>
-        </div>
-    </div>
-    <div class="container global">
-        <div class="privilege" id="prof-pedagog">
-            <div class="section-title">Фундаментальное среднее образование в &laquo;Дубравушке&raquo; - это:</div>
-
-            <div class="section-container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="block-left">&nbsp;</div>
-
-                        <div class="block-right">
-                            <div class="block-title">Индивидуальный подход</div>
-
-                            <div class="block-desc">В &laquo;Дубравушке&raquo; учатся дети с 1 по 11 класс, в каждом
-                                классе не более 16 учеников. Это позволяет нам заниматься с детьми по программе,
-                                разработанной специально для каждого, а прикрепление индивидуального куратора даёт
-                                возможность обеспечить высокие стандарты обучения и воспитания.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="block-left">&nbsp;</div>
-
-                        <div class="block-right">
-                            <div class="block-title">Сильный учительский состав</div>
-
-                            <div class="block-desc">Все наши учителя не только преподают, но и воспитывают учеников. Они
-                                стремятся раскрыть каждого ребенка, не &quot;натаскивают&quot; его, а учат мыслить. В
-                                &laquo;Дубравушку&raquo; также приглашаются педагоги из Великобритании.&nbsp;
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="block-left">&nbsp;</div>
-
-                        <div class="block-right">
-                            <div class="block-title">Дополнительное образование</div>
-
-                            <div class="block-desc">Благодаря пансиону у наших учеников есть достаточно времени, чтобы
-                                заниматься в разных секциях и кружках, они получают умения и навыки во многих областях,
-                                полностью раскрывают свой творческий потенциал.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="block-left">&nbsp;</div>
-
-                        <div class="block-right">
-                            <div class="block-title">Усиленная общеобразовательная школьная программа</div>
-
-                            <div class="block-desc">Наша общеобразовательная школьная программа усилена глубоким
-                                изучением иностранных языков, дополнена предметами, способствующими эстетическому
-                                развитию, много времени уделяется физической активности.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="block-left">&nbsp;</div>
-
-                        <div class="block-right">
-                            <div class="block-title">Гарантия поступления наших выпускников в престижные вузы</div>
-
-                            <div class="block-desc">Поступлению наших выпускников в выбранные ими вузы способствует
-                                сотрудничество с ведущими преподавателями МГУ, МГИМО и РГГУ, которые готовят наших
-                                учеников по специальной программе.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="block-left">&nbsp;</div>
-
-                        <div class="block-right">
-                            <div class="block-title">Безопасность и здоровье</div>
-
-                            <div class="block-desc">Мы стараемся не ограничивать детей в свободе, но они всегда
-                                находятся под присмотром взрослых. Высокая безопасность обеспечивается благодаря
-                                круглосуточной охране, видеонаблюдению, штату воспитателей. На территории школы также
-                                круглосуточно действует медицинский пункт.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <a class="look-all" href="<?php echo $review_btn_link; ?>">
+                    <?php echo $review_btn_text; ?>
+                </a>
             </div>
         </div>
     </div>
+
+    <div class="container global">
+        <div class="privilege" id="prof-pedagog">
+            <div class="section-title">
+                <?php echo $prof_title; ?>
+            </div>
+
+            <?php if (have_rows('prof_list')): ?>
+                <div class="section-container">
+                    <?php
+                    while (have_rows('prof_list')) :
+                        the_row();
+                        $title = get_sub_field('title');
+                        $text = get_sub_field('text');
+                        $index = get_row_index();
+                        ?>
+                        <?php if ($index === 1 || $index === 3 || $index === 5): ?>
+                        <div class="row">
+                    <?php endif; ?>
+                        <div class="col-md-6">
+                            <div class="block-left">&nbsp;</div>
+                            <div class="block-right">
+                                <div class="block-title">
+                                    <?php echo $title; ?>
+                                </div>
+                                <div class="block-desc">
+                                    <?php echo $text; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if ($index === 2 || $index === 4 || $index === 6): ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php endwhile; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+
     <div class="container global">
         <div class="director">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="director__photo"><img alt="Людмила Владимировна Горшкова"
-                                                      src="images/superiors/gorshkova_square.jpg"/></div>
+                    <div class="director__photo">
+                        <img alt="Людмила Владимировна Горшкова" src="<?php echo $quote_image; ?>"/>
+                    </div>
                 </div>
 
                 <div class="col-md-9">
-                    <div class="director__info"><img alt="Цитата" class="director__quoteimg"
-                                                     src="images/superiors/quote.png"/>
-                        <div class="director__quote">Школа-пансион &laquo;Дубравушка&raquo; - это атмосфера свободы от
-                            постоянной опеки, это ответственность за результаты своего труда, это способность что-то
-                            делать самому, своими руками, в том числе, заботиться о себе в быту, это постоянное живое, а
-                            не виртуальное общение со сверстниками &mdash; без гаджетов и девайсов, это посещение
-                            любимых секций и кружков и даже простое нахождение на свежем воздухе. Именно в этой
-                            атмосфере начинается становление личности ребенка &mdash; пускай молодой, неопытной, но
-                            настоящей.
+                    <div class="director__info">
+                        <img alt="Цитата" class="director__quoteimg"
+                             src="<?php echo get_stylesheet_directory_uri(); ?>/images/quote.png"/>
+                        <div class="director__quote">
+                            <?php echo $quote_text; ?>
                         </div>
-
-                        <p class="director__name"><span class="text-bold">Людмила Владимировна Горшкова</span>, директор
-                            по учебно-воспитательной работе</p>
+                        <p class="director__name">
+                            <?php echo $quote_author; ?>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+<?php if (have_rows('leisure_list')): ?>
     <div class="container global">
         <div class="nsection dopobrazovanie-wrap" id="dopobrazovanie">
-            <div class="nsection__title">Активный досуг и интересное свободное время</div>
+            <div class="nsection__title">
+                <?php echo $leisure_title; ?>
+            </div>
 
-            <p class="nsection__subtitle">Жизнь наших воспитанников очень насыщенная, мы предлагаем большой выбор
-                занятий для развития Вашего ребенка</p>
+            <p class="nsection__subtitle">
+                <?php echo $leisure_subtitle; ?>
+            </p>
 
             <div class="row">
-                <div class="col-md-4">
-                    <div class="dopobrazovanie__item">
-                        <h3 class="dopobrazovanie__title">Кружки и секции</h3>
+                <?php
+                while (have_rows('leisure_list')) :
+                    the_row();
+                    $title = get_sub_field('title');
+                    $text = get_sub_field('text');
+                    $link = get_sub_field('link');
+                    ?>
+                    <div class="col-md-4">
+                        <div class="dopobrazovanie__item">
+                            <h3 class="dopobrazovanie__title">
+                                <?php echo $title; ?>
+                            </h3>
 
-                        <p class="dopobrazovanie__text">Творческие занятия в &laquo;Дубравушке&raquo; являются
-                            неотъемлемой частью образовательного процесса. В школе работают художественная мастерская,
-                            музыкальная и актерская студии, проходят занятия хореографией, тренинги различной
-                            направленности.</p>
-                        <a class="dopobrazovanie__btn" href="https://dubravushka.ru/sections"
-                           target="_blank">Подробнее</a></div>
-                    <!-- .dopobrazovanie__item --></div>
+                            <p class="dopobrazovanie__text">
+                                <?php echo $text; ?>
+                            </p>
 
-                <div class="col-md-4">
-                    <div class="dopobrazovanie__item">
-                        <h3 class="dopobrazovanie__title">Экскурсии и поездки</h3>
+                            <a class="dopobrazovanie__btn" href="<?php echo $link; ?>" target="_blank">
+                                Подробнее
+                            </a>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
 
-                        <p class="dopobrazovanie__text">В выходные дни мы организуем выездные мероприятия в театры, в
-                            музеи, на выставки, в кино, на концерты, спортивные мероприятия. Мы хотим, чтобы наши
-                            ученики, жили полной и разнообразной.</p>
-                        <a class="dopobrazovanie__btn" href="https://dubravushka.ru/leisure"
-                           target="_blank">Подробнее</a></div>
-                    <!-- .dopobrazovanie__item --></div>
-
-                <div class="col-md-4">
-                    <div class="dopobrazovanie__item">
-                        <h3 class="dopobrazovanie__title">Спорт и здоровье</h3>
-
-                        <p class="dopobrazovanie__text">У нас большой выбор дополнительных занятий спортом, так что
-                            каждый может выбрать то, что ему подходит: бассейн, индивидуальные или коллективные виды
-                            спорта, единоборства, конный спорт, гимнастика.</p>
-                        <a class="dopobrazovanie__btn" href="https://dubravushka.ru/sports"
-                           target="_blank">Подробнее</a></div>
-                    <!-- .dopobrazovanie__item --></div>
             </div>
         </div>
     </div>
+<?php endif; ?>
+
     <div class="container global">
         <div class="nsection__title">Наша команда</div>
 
@@ -540,6 +432,7 @@ $id_youtube = get_field('id_youtube');
             </div>
         </div>
     </div>
+
     <div class="container global">
         <link href="css/dubravushka.css" rel="stylesheet"/>
         <div class="nsection security-wrap" id="security">
@@ -585,6 +478,7 @@ $id_youtube = get_field('id_youtube');
                     2021 год.</a></p>
         </div>
     </div>
+
     <div class="container global">
         <div class="left-text left-text-dop-style">
             <h3>Хотите узнать больше о школе? Пусть ребенок приедет к нам в летний лагерь!</h3>
@@ -602,7 +496,9 @@ $id_youtube = get_field('id_youtube');
             <div class="youtube" id="144tEfWTLBk" style="width:600px;height:360px;">&nbsp;</div>
         </div>
     </div>
+
     <div class="container global"></div>
+
     <div class="container">
         <div class="home-page form-bottom"></div>
         <div class="home-page">
@@ -837,7 +733,5 @@ $id_youtube = get_field('id_youtube');
             </div>
         </div>
     </div>
-
-
 <?php
 get_footer();
