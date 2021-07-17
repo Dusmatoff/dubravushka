@@ -25,12 +25,14 @@ $address = get_field('address', 'option');
                     <div class="footer-topbar__copyright pull-left"><?php echo $copyright; ?></div>
                 </div>
                 <div class="col-xs-7">
-                    <ul class="info list-inline pull-right hidden-xs hidden-sm hidden-md">
-                        <li class="info__item"><a href="/eljur">Электронный дневник</a></li>
-                        <li class="info__item"><a href="/contacts">Как добраться</a></li>
-                        <li class="info__item"><a href="/job">Вакансии</a></li>
-                        <li class="info__item"><a href="https://www.bus.gov.ru/pub/home">Написать отзыв</a></li>
-                    </ul>
+                    <?php
+                    wp_nav_menu([
+                        'theme_location' => 'footer-copyright',
+                        'container' => false,
+                        'menu_class' => 'info list-inline pull-right hidden-xs hidden-sm hidden-md',
+                        'add_li_class' => 'info__item'
+                    ]);
+                    ?>
                 </div>
             </div>
         </div>
@@ -39,77 +41,63 @@ $address = get_field('address', 'option');
             <div class="row full-height footer__item-container">
                 <div class="col-xs-2  footer__item">
                     <div class="footer-middlebar__title">О школе</div>
-                    <ul class="footer-middlebar__info list-unstyled">
-                        <li><a href="/founders">Слово учредителя</a></li>
-                        <li><a href="/geography">Откуда наши ученики</a></li>
-                        <li><a href="/reviews">Отзывы о школе</a></li>
-                        <li><a href="/location">Расположение</a></li>
-                        <li><a href="/history">История</a></li>
-                        <li><a href="/nashi-uchitelya">Наши учителя</a></li>
-                        <li><a href="/basic_information">Сведения об образовательной организации</a></li>
-                        <li><a href="/graduates">Выпускники</a></li>
-                        <li><a href="/charity">Благотворительная деятельность</a></li>
-                        <li><a href="/prefects">Школьное самоуправление</a></li>
-                        <li><a href="/privacy">Политика конфиденцильности</a></li>
-                        <li><a href="/job">Вакансии</a></li>
-                        <li><a href="/prava-detey">Права несовершеннолетних</a></li>
-                    </ul>
+                    <?php
+                    wp_nav_menu([
+                        'theme_location' => 'footer-school',
+                        'container' => false,
+                        'menu_class' => 'footer-middlebar__info list-unstyled',
+                    ]);
+                    ?>
                 </div>
                 <div class="col-xs-2 column-bordered footer__item">
                     <div class="footer-middlebar__title">Образование</div>
-                    <ul class="footer-middlebar__info list-unstyled">
-                        <li><a href="/kursy-angliiskogo">Короткие курсы английского</a></li>
-                        <li><a href="/concept">Концепция</a></li>
-                        <li><a href="/english">Английский язык</a></li>
-                        <li><a href="/exams">ЕГЭ и поступление в вуз</a></li>
-                        <li><a href="/gia">ГИА</a></li>
-                        <li><a href="/timetable">Расписание и распорядок дня</a></li>
-                        <li><a href="/extracurriculum">Дополнительное образование</a></li>
-                        <li><a href="/scienceconference">Научно-практическая конференция</a></li>
-                        <li><a href="/eljur">Электронный дневник</a></li>
-                    </ul>
+                    <?php
+                    wp_nav_menu([
+                        'theme_location' => 'footer-education',
+                        'container' => false,
+                        'menu_class' => 'footer-middlebar__info list-unstyled',
+                    ]);
+                    ?>
                 </div>
                 <div class="col-xs-2 column-bordered footer__item">
                     <div class="footer-middlebar__title">Пансион</div>
-                    <ul class="footer-middlebar__info list-unstyled">
-                        <li><a href="/houses">Жилые корпуса</a></li>
-                        <li><a href="/canteen">Питание</a></li>
-                        <li><a href="/individual-curator">Индивидуальный куратор</a></li>
-                        <li><a href="/safety">Безопасность</a></li>
-                        <li><a href="/medicine">Медпункт</a></li>
-                        <li><a href="/adaptation">Психологическое сопровождение</a></li>
-                        <li><a href="/sections">Кружки и секции</a></li>
-                        <li><a href="/sports">Спорт</a></li>
-                        <li><a href="/drama">Театр</a></li>
-                        <li><a href="/leisure">Праздники и досуг</a></li>
-                    </ul>
+                    <?php
+                    wp_nav_menu([
+                        'theme_location' => 'footer-house',
+                        'container' => false,
+                        'menu_class' => 'footer-middlebar__info list-unstyled',
+                    ]);
+                    ?>
                 </div>
                 <div class="col-xs-2 column-bordered footer__item">
                     <div class="footer-middlebar__title">Новости</div>
-                    <ul class="footer-middlebar__info list-unstyled">
-                        <li><a href="/news">Новости школы</a></li>
-                        <li><a href="/news/interesnoye">Интересное</a></li>
-                        <li><a href="/video">Видео о школе</a></li>
-                        <li><a href="/smi">СМИ о школе</a></li>
-                    </ul>
+                    <?php
+                    wp_nav_menu([
+                        'theme_location' => 'footer-news',
+                        'container' => false,
+                        'menu_class' => 'footer-middlebar__info list-unstyled',
+                    ]);
+                    ?>
                 </div>
                 <div class="col-xs-2 column-bordered footer__item">
                     <div class="footer-middlebar__title">Поступление</div>
-                    <ul class="footer-middlebar__info list-unstyled">
-                        <li><a href="/for-applicants">Поступающим</a></li>
-                        <li><a href="/conditions">Условия приема</a></li>
-                        <li><a href="/dokumenty-dlya-postupleniya">Документы для поступления</a></li>
-                        <li><a href="/fees">Стоимость обучения</a></li>
-                        <li><a href="/training-courses">Подготовительные курсы</a></li>
-                        <li><a href="/literatura-na-leto">Литература на лето</a></li>
-                    </ul>
+                    <?php
+                    wp_nav_menu([
+                        'theme_location' => 'footer-admission',
+                        'container' => false,
+                        'menu_class' => 'footer-middlebar__info list-unstyled',
+                    ]);
+                    ?>
                 </div>
                 <div class="col-xs-2 column-bordered footer__item">
                     <div class="footer-middlebar__title">Контакты</div>
-                    <ul class="footer-middlebar__info list-unstyled">
-                        <li><a href="/contacts">Контакты школы</a></li>
-                        <li><a href="http://dubravushka-camp.ru/contacts/">Контакты лагеря</a></li>
-                    </ul>
+                    <?php
+                    wp_nav_menu([
+                        'theme_location' => 'footer-contacts',
+                        'container' => false,
+                        'menu_class' => 'footer-middlebar__info list-unstyled',
+                    ]);
+                    ?>
                 </div>
             </div>
         </div>
@@ -133,7 +121,7 @@ $address = get_field('address', 'option');
                 </li>
             </ul>
             <div class="footer-bottombar__privacy visible-xs visible-sm visible-md text-center">
-                <a href="/privacy">Политика конфиденциальности</a>
+                <a href="/privacy/">Политика конфиденциальности</a>
             </div>
             <hr class="divider bg-theme__autumn visible-xs visible-sm visible-md"/>
             <div class="footer-bottombar__copyright pull-right">

@@ -34,6 +34,21 @@ $quote_author = get_field('quote_author');
 
 $leisure_title = get_field('leisure_title');
 $leisure_subtitle = get_field('leisure_subtitle');
+
+$team_title = get_field('team_title');
+$team_subtitle = get_field('team_subtitle');
+$team_list = get_field('team_list');
+
+$security_title = get_field('security_title');
+$security_subtitle = get_field('security_subtitle');
+$security_link = get_field('security_link');
+$security_link_text = get_field('security_link_text');
+
+$more_title = get_field('more_title');
+$more_text = get_field('more_text');
+$more_youtube_id = get_field('more_youtube_id');
+
+$news = get_posts(['numberposts' => 8]);
 ?>
     <div class="index-top-content">
         <div class="content-img"
@@ -81,7 +96,6 @@ $leisure_subtitle = get_field('leisure_subtitle');
         </div>
     </div>
 <?php endif; ?>
-
 
     <div class="container global">
         <div class="banner-text">
@@ -298,440 +312,108 @@ $leisure_subtitle = get_field('leisure_subtitle');
 <?php endif; ?>
 
     <div class="container global">
-        <div class="nsection__title">Наша команда</div>
+        <div class="nsection__title">
+            <?php echo $team_title; ?>
+        </div>
 
-        <p class="nsection__subtitle">Сотрудники &laquo;Дубравушки&raquo; &ndash; это профессионалы, по-настоящему
-            увлеченные своей работой.</p>
+        <p class="nsection__subtitle">
+            <?php echo $team_subtitle; ?>
+        </p>
 
         <div class="superiors">
             <div class="superiors__row">
                 <div class="row">
-                    <div class="col-md-1-5">
-                        <div class="superiors__item">
-                            <div class="superiors__itemphoto"><img alt="Кравцова Юлия Владимировна"
-                                                                   src="images/superiors/kravcova.jpg"/></div>
+                    <?php foreach ($team_list as $team): ?>
+                        <div class="col-md-1-5">
+                            <div class="superiors__item" style="margin-bottom: 1.5em;">
+                                <div class="superiors__itemphoto">
+                                    <img alt="<?php echo $team->post_title; ?>"
+                                         src="<?php echo get_the_post_thumbnail_url($team->ID); ?>"/>
+                                </div>
 
-                            <div class="superiors__itemname">Юлия Владимировна Кравцова</div>
+                                <div class="superiors__itemname">
+                                    <?php echo $team->post_title; ?>
+                                </div>
 
-                            <div class="superiors__itemposition">Директор АНО &laquo;ОШИ &laquo;Дубравушка&raquo;</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-1-5">
-                        <div class="superiors__item">
-                            <div class="superiors__itemphoto"><img alt="Михалычев Борис Иванович"
-                                                                   src="images/superiors/mihalychev.jpg"/></div>
-
-                            <div class="superiors__itemname">Борис Иванович Михалычев</div>
-
-                            <div class="superiors__itemposition">Заместитель директора по воспитательной работе,
-                                начальник пансиона
+                                <div class="superiors__itemposition">
+                                    <?php echo $team->post_content; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-1-5">
-                        <div class="superiors__item">
-                            <div class="superiors__itemphoto"><img alt="Белашова Юлия Петровна"
-                                                                   src="images/superiors/belashova.jpg"/></div>
-
-                            <div class="superiors__itemname">Юлия Петровна Белашова</div>
-
-                            <div class="superiors__itemposition">Заместитель директора по учебно-воспитательной работе
-                                5-7 кл.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-1-5">
-                        <div class="superiors__item">
-                            <div class="superiors__itemphoto"><img alt="Акишина Татьяна Викторовна"
-                                                                   src="images/superiors/akishina.jpg"/></div>
-
-                            <div class="superiors__itemname">Татьяна Викторовна Акишина</div>
-
-                            <div class="superiors__itemposition">Заместитель директора по изучению английского языка
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-1-5">
-                        <div class="superiors__item">
-                            <div class="superiors__itemphoto"><img alt="Авраменко Анна Константиновна"
-                                                                   src="images/superiors/avramenko.jpg"/></div>
-
-                            <div class="superiors__itemname">Анна Константиновна Авраменко</div>
-
-                            <div class="superiors__itemposition">Руководитель психологической службы</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="superiors__row">
-                <div class="row">
-                    <div class="col-md-1-5">
-                        <div class="superiors__item">
-                            <div class="superiors__itemphoto"><img alt="Лупачева Марина Ивановна"
-                                                                   src="images/superiors/lupacheva.jpg"/></div>
-
-                            <div class="superiors__itemname">Марина Ивановна Лупачева</div>
-
-                            <div class="superiors__itemposition">Заместитель директора по учебно-воспитательной работе
-                                8-11 кл.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-1-5">
-                        <div class="superiors__item">
-                            <div class="superiors__itemphoto"><img alt="Карпухина Елена Валерьевна"
-                                                                   src="images/superiors/karpuhina.jpg"/></div>
-
-                            <div class="superiors__itemname">Елена Валерьевна Карпухина</div>
-
-                            <div class="superiors__itemposition">Руководитель специальных проектов</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-1-5">
-                        <div class="superiors__item">
-                            <div class="superiors__itemphoto"><img alt="Силаева Ирина Владимировна"
-                                                                   src="images/superiors/silaeva.jpg"/></div>
-
-                            <div class="superiors__itemname">Ирина Владимировна Силаева</div>
-
-                            <div class="superiors__itemposition">Заместитель директора по учебной работе в начальной
-                                школе
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-1-5">
-                        <div class="superiors__item">
-                            <div class="superiors__itemphoto"><img alt="Бахолдин Василий Алексеевич"
-                                                                   src="images/superiors/baholdin.jpg"/></div>
-
-                            <div class="superiors__itemname">Василий Алексеевич Бахолдин</div>
-
-                            <div class="superiors__itemposition">Воспитатель корпуса мальчиков</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-1-5">
-                        <div class="superiors__item">
-                            <div class="superiors__itemphoto"><img alt="Анищенко Глеб Александрович"
-                                                                   src="images/superiors/anishchenko.jpg"/></div>
-
-                            <div class="superiors__itemname">Глеб Александрович Анищенко</div>
-
-                            <div class="superiors__itemposition">Заведующий кафедрой&nbsp;литературы</div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container global">
-        <link href="css/dubravushka.css" rel="stylesheet"/>
         <div class="nsection security-wrap" id="security">
-            <div class="nsection__title">В &laquo;Дубравушке&raquo; безопасность и охрана на высоком уровне</div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="security__icon"><img src="images/security/kisspng-gate-computer.png"/></div>
-
-                    <h3 class="security__title">Установлено ограждение по периметру территории</h3>
-
-                    <p class="security__text">На въезде в школу установлен шлагбаум. Въезд только по пропускам. Входная
-                        калитка и ворота оснащены электрозамком.</p>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="security__icon"><img src="images/security/fire-alarm-system.png"/></div>
-
-                    <h3 class="security__title">Современное противопожарное автоматическое оборудование</h3>
-
-                    <p class="security__text">Оснащение современным противопожарным оборудованием и сигнализацией
-                        оповещения о пожаре. Школа оснащена узлом радиооповещения.</p>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="security__icon"><img src="images/security/video-alarm-system.png"/></div>
-
-                    <h3 class="security__title">Система видеонаблюдения на территории и в зданиях</h3>
-
-                    <p class="security__text">Вся территория школы контролируется камерами наблюдения. Имеется
-                        круглосуточная охрана. Система контроля-доступа.</p>
-                </div>
+            <div class="nsection__title">
+                <?php echo $security_title; ?>
             </div>
 
-            <p class="security__bottomtext">Благодаря этому жизнь и учеба становятся более безопасными, эффективными и
-                приятными.</p>
+            <?php if (have_rows('security_icons')): ?>
+                <div class="row">
+                    <?php
+                    while (have_rows('security_icons')) :
+                        the_row();
+                        $icon = get_sub_field('icon');
+                        $title = get_sub_field('title');
+                        $text = get_sub_field('text');
+                        ?>
+                        <div class="col-md-4">
+                            <div class="security__icon">
+                                <img src="<?php echo $icon; ?>"/>
+                            </div>
+
+                            <h3 class="security__title">
+                                <?php echo $title; ?>
+                            </h3>
+
+                            <p class="security__text">
+                                <?php echo $text; ?>
+                            </p>
+                        </div>
+                    <?php endwhile; ?>
+                </div>
+            <?php endif; ?>
+
+            <p class="security__bottomtext">
+                <?php echo $security_subtitle; ?>
+            </p>
         </div>
 
         <div style="text-align:center;">
-            <p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfR8Oj8rUyQbsbMEoNAGeODF96sIYMCHwo2T6Vq2VGO6af4bA/viewform"
-                   rel="nofollow">Анкета для опроса получателей услуг о качестве условий оказания услуг организацией за
-                    2021 год.</a></p>
+            <h3>
+                <a href="<?php echo $security_link; ?>" rel="nofollow">
+                    <?php echo $security_link_text; ?>
+                </a>
+            </h3>
         </div>
     </div>
 
     <div class="container global">
         <div class="left-text left-text-dop-style">
-            <h3>Хотите узнать больше о школе? Пусть ребенок приедет к нам в летний лагерь!</h3>
+            <h3><?php echo $more_title; ?></h3>
 
-            <p>Если Ваш ребенок планирует поступление к нам в школу-пансион, то&nbsp;<a
-                        href="http://dubravushkacamp.ru">Международный детский лагерь &laquo;Дубравушка&raquo;</a>&nbsp;-
-                прекрасная возможность познакомиться с атмосферой и условиями, в которых он будет жить весь год.&nbsp;Лагерь
-                работает в летнее время на территории школы и дает возможность детям познакомиться со школой в легкой и
-                приятной обстановке.<br/>
-                Каждое лето более 700 детей приезжают сюда отдыхать в формате большой ролевой игры и заниматься&nbsp; с
-                преподавателями Британской школы Kent School of English и студентами Кембриджа и Оксфорда.<br/>
-                Ваш ребёнок сам сделает выбор!</p>
+            <?php echo $more_text; ?>
         </div>
         <div class="right-video">
-            <div class="youtube" id="144tEfWTLBk" style="width:600px;height:360px;">&nbsp;</div>
+            <div class="youtube" id="<?php echo $more_youtube_id; ?>" style="width:600px;height:360px;">&nbsp;</div>
         </div>
     </div>
 
     <div class="container global"></div>
 
     <div class="container">
-        <div class="home-page form-bottom"></div>
+        <div class="home-page form-bottom">
+            <!-- TODO Форма -->
+        </div>
         <div class="home-page">
-            <div class="share-block">
-
-                <script async src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-
-                <script async src="//yastatic.net/share2/share.js"></script>
-
-                <div class="ya-share2"
-                     data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,viber,whatsapp,telegram"></div>
-
-            </div>
+            <?php get_template_part('template-parts/share-block'); ?>
         </div>
     </div>
 
-    <div class="container-fluid custom-padding bg-theme__coffee widget-news">
-        <div class="container">
-            <div class="news">
-                <div class="row hidden-xs">
-                    <div class="col-xs-3 hidden-sm hidden-md">
-                        <div class="news__sidebar text-center">
-                            <div class="logo-wrapper">
-                                <img class="logo" src="/images/logo.png"></div>
-                            <a class="go-to-news" href="news/">
-                                <p class="content">Посмотреть<br>новости</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xs-9 col-sm-12 col-md-12 col-lg-9">
-                        <div class="row">
-                            <div class="col-sm-3 col-lg-3">
-                                <div class="news__sidebar text-center visible-sm visible-md">
-                                    <div class="logo-wrapper"><img class="logo" src="/images/logo-mobile.png"></div>
-                                    <a class="go-to-news" href="news/">
-                                        <p class="content">Посмотреть<br>новости</p></a>
-                                </div>
-                                <a class="visible-lg" href="/news/2020-2021/medalisty-dubravushki">
-                                    <div class="news__item">
-                                        <div class="overlay hidden-sm hidden-md">
-                                            <div class="overlay-background"></div>
-                                            <p class="content">Медалисты «Дубравушки»</p>
-                                        </div>
-                                        <img class="img-responsive" src="/uploads/news/692/60db7c223b1c3.jpg">
-                                        <p class="content-tablet visible-sm visible-md">Медалисты «Дубравушки»</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-3 col-lg-3">
-                                <a href="/news/interesnoye/pochemu-nashi-ucheniki-dobivayut-sya-khoroshikh-rezul-tatov-i-uchat-sya-s-udovol-stviyem">
-                                    <div class="news__item">
-                                        <div class="overlay hidden-sm hidden-md">
-                                            <div class="overlay-background"></div>
-                                            <p class="content">Почему наши ученики добиваются хороших результатов и
-                                                учатся с удовольствием</p>
-                                        </div>
-                                        <img class="img-responsive" src="/uploads/news/691/60d4bcb8dbd73.jpg">
-                                        <p class="content-tablet visible-sm visible-md">Почему наши ученики добиваются
-                                            хороших результатов и учатся с удовольствием</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-3 col-lg-3">
-                                <a href="/news/2020-2021/pozdravlyayem-vypusknikov-11-klass-s-rezul-tatami-po-yeg-e">
-                                    <div class="news__item">
-                                        <div class="overlay hidden-sm hidden-md">
-                                            <div class="overlay-background"></div>
-                                            <p class="content">Поздравляем выпускников 11 класс с результатами по
-                                                ЕГЭ!</p>
-                                        </div>
-                                        <img class="img-responsive" src="/uploads/news/690/60d4b7074f294.jpg">
-                                        <p class="content-tablet visible-sm visible-md">Поздравляем выпускников 11 класс
-                                            с результатами по ЕГЭ!</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-3 col-lg-3">
-                                <a href="/news/interesnoye/kak-roditelyam-vybrat-shkolu-s-prozhivaniyem-dlya-svoyego-rebenka">
-                                    <div class="news__item">
-                                        <div class="overlay hidden-sm hidden-md">
-                                            <div class="overlay-background"></div>
-                                            <p class="content">Как родителям выбрать школу с проживанием для своего
-                                                ребенка?</p>
-                                        </div>
-                                        <img class="img-responsive" src="/uploads/news/689/60d0b21633f08.jpg">
-                                        <p class="content-tablet visible-sm visible-md">Как родителям выбрать школу с
-                                            проживанием для своего ребенка?</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-3 col-lg-3">
-                                <a href="/news/interesnoye/bezopasnost-i-svoboda-mozhno-li-sovmestit-eto-v-shkole">
-                                    <div class="news__item">
-                                        <div class="overlay hidden-sm hidden-md">
-                                            <div class="overlay-background"></div>
-                                            <p class="content">Безопасность и свобода: можно ли совместить это в
-                                                школе?</p>
-                                        </div>
-                                        <img class="img-responsive" src="/uploads/news/688/60b1412668f09.jpg">
-                                        <p class="content-tablet visible-sm visible-md">Безопасность и свобода: можно ли
-                                            совместить это в школе?</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-3 col-lg-3">
-                                <a href="/news/interesnoye/pedagogi-dubravushki-yevgeniya-aleksandrovna-kostrikova">
-                                    <div class="news__item">
-                                        <div class="overlay hidden-sm hidden-md">
-                                            <div class="overlay-background"></div>
-                                            <p class="content">Педагоги «Дубравушки»: Евгения Александровна
-                                                Кострикова</p>
-                                        </div>
-                                        <img class="img-responsive" src="/uploads/news/687/60745f5f47a09.jpg">
-                                        <p class="content-tablet visible-sm visible-md">Педагоги «Дубравушки»: Евгения
-                                            Александровна Кострикова</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-3 col-lg-3">
-                                <a href="/news/interesnoye/nuzhno-li-rebenku-uchit-kitayskiy-yazyk">
-                                    <div class="news__item">
-                                        <div class="overlay hidden-sm hidden-md">
-                                            <div class="overlay-background"></div>
-                                            <p class="content">Нужно ли ребенку учить китайский язык?</p>
-                                        </div>
-                                        <img class="img-responsive" src="/uploads/news/686/606f21927256c.jpg">
-                                        <p class="content-tablet visible-sm visible-md">Нужно ли ребенку учить китайский
-                                            язык?</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-3 col-lg-3">
-                                <a href="/news/2020-2021/ucheniki-dubravushki-podgotovili-neobychnyye-proyekty-na-den-nauki">
-                                    <div class="news__item">
-                                        <div class="overlay hidden-sm hidden-md">
-                                            <div class="overlay-background"></div>
-                                            <p class="content">Ученики «Дубравушки» подготовили необычные проекты на
-                                                День науки</p>
-                                        </div>
-                                        <img class="img-responsive" src="/uploads/news/685/606b38732b1f7.jpg">
-                                        <p class="content-tablet visible-sm visible-md">Ученики «Дубравушки» подготовили
-                                            необычные проекты на День науки</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-mobile visible-xs">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="news-mobile__sidebar text-center">
-                                <div class="logo-wrapper"><img class="logo" src="/images/logo-mobile.png"></div>
-                                <a class="go-to-news" href="news/">
-                                    <p class="content">Посмотреть<br>новости</p></a>
-                            </div>
-                            <div class="news-carousel owl-carousel owl-theme" id="news-carousel">
-                                <div>
-                                    <a href="/news/2020-2021/medalisty-dubravushki">
-                                        <img src="/uploads/news/692/60db7c223b1c3.jpg">
-                                        <div class="content">
-                                            <h2 class="item-title">Медалисты «Дубравушки»</h2>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="/news/interesnoye/pochemu-nashi-ucheniki-dobivayut-sya-khoroshikh-rezul-tatov-i-uchat-sya-s-udovol-stviyem">
-                                        <img src="/uploads/news/691/60d4bcb8dbd73.jpg">
-                                        <div class="content">
-                                            <h2 class="item-title">Почему наши ученики добиваются хороших результатов и
-                                                учатся с удовольствием</h2>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="/news/2020-2021/pozdravlyayem-vypusknikov-11-klass-s-rezul-tatami-po-yeg-e">
-                                        <img src="/uploads/news/690/60d4b7074f294.jpg">
-                                        <div class="content">
-                                            <h2 class="item-title">Поздравляем выпускников 11 класс с результатами по
-                                                ЕГЭ!</h2>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="/news/interesnoye/kak-roditelyam-vybrat-shkolu-s-prozhivaniyem-dlya-svoyego-rebenka">
-                                        <img src="/uploads/news/689/60d0b21633f08.jpg">
-                                        <div class="content">
-                                            <h2 class="item-title">Как родителям выбрать школу с проживанием для своего
-                                                ребенка?</h2>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="/news/interesnoye/bezopasnost-i-svoboda-mozhno-li-sovmestit-eto-v-shkole">
-                                        <img src="/uploads/news/688/60b1412668f09.jpg">
-                                        <div class="content">
-                                            <h2 class="item-title">Безопасность и свобода: можно ли совместить это в
-                                                школе?</h2>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="/news/interesnoye/pedagogi-dubravushki-yevgeniya-aleksandrovna-kostrikova">
-                                        <img src="/uploads/news/687/60745f5f47a09.jpg">
-                                        <div class="content">
-                                            <h2 class="item-title">Педагоги «Дубравушки»: Евгения Александровна
-                                                Кострикова</h2>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="/news/interesnoye/nuzhno-li-rebenku-uchit-kitayskiy-yazyk">
-                                        <img src="/uploads/news/686/606f21927256c.jpg">
-                                        <div class="content">
-                                            <h2 class="item-title">Нужно ли ребенку учить китайский язык?</h2>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="/news/2020-2021/ucheniki-dubravushki-podgotovili-neobychnyye-proyekty-na-den-nauki">
-                                        <img src="/uploads/news/685/606b38732b1f7.jpg">
-                                        <div class="content">
-                                            <h2 class="item-title">Ученики «Дубравушки» подготовили необычные проекты на
-                                                День науки</h2>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php get_template_part('template-parts/news-block'); ?>
 <?php
 get_footer();

@@ -56,7 +56,6 @@ if ( function_exists( 'acf_add_options_page' ) ) {
  * Custom Post Types
  *****************************************************/
 function dubravushka_register_my_cpts() {
-
     /**
      * Post Type: Отзывы.
      */
@@ -73,6 +72,23 @@ function dubravushka_register_my_cpts() {
     ];
 
     register_post_type( 'review', $args );
+
+    /**
+     * Post Type: Команда.
+     */
+
+    $args = [
+        'label' => 'Команда',
+        'labels' => [
+            'name' => 'Команда',
+            'singular_name' => 'Команда',
+        ],
+        'public' => true,
+        'menu_icon' => 'dashicons-welcome-learn-more',
+        'supports' => [ 'title', 'editor', 'thumbnail' ],
+    ];
+
+    register_post_type( 'team', $args );
 }
 
 add_action( 'init', 'dubravushka_register_my_cpts' );

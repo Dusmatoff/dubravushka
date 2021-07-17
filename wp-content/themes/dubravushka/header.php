@@ -34,7 +34,7 @@ $logo = get_field('logo', 'option');
 wp_body_open();
 echo $scripts_body;
 ?>
-<div id="page" class="site">
+<div id="page">
     <header class="header">
         <div class="topbar-wrapper">
             <div class="container-fluid custom-padding">
@@ -122,82 +122,15 @@ echo $scripts_body;
                                value="">
                         <button class="search-btn">Поиск</button>
                     </form>
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#">О школе</a>
-                            <span class="caret"
-                                  data-toggle="dropdown"
-                                  role="button"
-                                  aria-haspopup="true"
-                                  aria-expanded="false">
-                            </span>
-                            <ul class="dropdown-menu">
-                                <li><a href="/founders">Слово основателя школы</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#">Образование</a>
-                            <span class="caret"
-                                  data-toggle="dropdown"
-                                  role="button"
-                                  aria-haspopup="true"
-                                  aria-expanded="false">
-                            </span>
-                            <ul class="dropdown-menu">
-                                <li><a href="/kursy-angliiskogo">Короткие курсы английского</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#">Пансион</a>
-                            <span class="caret"
-                                  data-toggle="dropdown"
-                                  role="button"
-                                  aria-haspopup="true"
-                                  aria-expanded="false">
-                            </span>
-                            <ul class="dropdown-menu">
-                                <li><a href="/living-conditions">Условия проживания</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#">Новости</a>
-                            <span class="caret"
-                                  data-toggle="dropdown"
-                                  role="button"
-                                  aria-haspopup="true"
-                                  aria-expanded="false">
-                            </span>
-                            <ul class="dropdown-menu">
-                                <li><a href="/news/interesnoye">Интересное</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#">Поступление</a>
-                            <span class="caret"
-                                  data-toggle="dropdown"
-                                  role="button" aria-haspopup="true"
-                                  aria-expanded="false">
-                            </span>
-                            <ul class="dropdown-menu">
-                                <li><a href="/conditions">Условия поступления</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#">Летний лагерь</a>
-                            <span class="caret"
-                                  data-toggle="dropdown"
-                                  role="button"
-                                  aria-haspopup="true"
-                                  aria-expanded="false">
-                            </span>
-                            <ul class="dropdown-menu">
-                                <li><a href="/camp-podmoskovie">Лагерь в Подмосковье</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="/contacts">Контакты</a>
-                        </li>
-                    </ul>
+                    <?php
+                    wp_nav_menu([
+                        'theme_location' => 'primary',
+                        'container' => false,
+                        'menu_class' => 'nav navbar-nav',
+                        'depth' => 2,
+                        'walker' => new Understrap_WP_Bootstrap_Navwalker(),
+                    ]);
+                    ?>
                 </div>
             </div>
         </nav>
