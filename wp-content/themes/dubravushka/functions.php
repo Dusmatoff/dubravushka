@@ -234,6 +234,39 @@ function add_additional_class_on_li($classes, $item, $args)
     return $classes;
 }
 
+// Custom pagination template
+function dubravushka_pagination($args = [], $class = 'pagination')
+{
+    if ($GLOBALS['wp_query']->max_num_pages <= 1) {
+        return;
+    }
 
-//TODO Change news url
-//TODO add fonts
+    $args = wp_parse_args(
+        $args,
+        [
+            'end_size' => 5,
+            'mid_size' => 5,
+            'prev_next' => true,
+            'prev_text' => '«',
+            'next_text' => '»',
+            'screen_reader_text' => 'Навигация',
+            'type' => 'array',
+            'current' => max(1, get_query_var('paged')),
+        ]
+    );
+
+    $links = paginate_links($args);
+    ?>
+    <ul class="pagination">
+        <?php
+        foreach ($links as $key => $link) {
+            ?>
+            <li class="<?php echo strpos($link, 'current') ? 'active' : ''; ?>">
+                <?php echo $link; ?>
+            </li>
+            <?php
+        }
+        ?>
+    </ul>
+    <?php
+}

@@ -10,42 +10,68 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+    <div class="container news-list">
+        <div class="article article_default">
+            <div class="article__sidebar">
+                <div class="quick-menu quick-menu_default">
+                    <?php
+                    $menu = wp_nav_menu([
+                        'theme_location' => 'sidebar-news-category',
+                        'container' => false,
+                    ]);
+                    ?>
+                </div>
+            </div>
 
-		<?php if ( have_posts() ) : ?>
+            <div class="article__content">
+                <h1>Новости</h1>
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+                <?php
+                if (function_exists('yoast_breadcrumb')) {
+                    yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
+                }
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+                the_archive_title('<h4 class="article-title">', '</h1>');
+                //the_archive_description('<div class="archive-description">', '</div>');
+                ?>
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+                <ul id="news-list" class="news-list">
+                    <div class="row">
+                        <?php if (have_posts()) : ?>
 
-			endwhile;
+                        <?php
+                        /* Start the Loop */
+                        while (have_posts()) :
+                            the_post();
 
-			the_posts_navigation();
+                            /*
+                             * Include the Post-Type-specific template for the content.
+                             * If you want to override this in a child theme, then include a file
+                             * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+                             */
+                            get_template_part('template-parts/content', get_post_type());
 
-		else :
+                        endwhile; ?>
+                    </div>
+                    <hr class="divider">
+                    <?php
+                    $url = home_url('post');
 
-			get_template_part( 'template-parts/content', 'none' );
+                    dubravushka_pagination([
+                        //'base' => $url . '/%_%',
+                        //'add_args' => get_query_var('paginationArgs')
+                    ]);
+                    //the_posts_navigation();
+                    else :
+                        get_template_part('template-parts/content', 'none');
+                    endif;
+                    ?>
+                </ul>
 
-		endif;
-		?>
-
-	</main><!-- #main -->
+            </div>
+        </div>
+    </div><!-- #main -->
 
 <?php
-get_sidebar();
+//get_sidebar();
 get_footer();
