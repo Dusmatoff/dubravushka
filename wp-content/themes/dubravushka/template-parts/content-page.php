@@ -15,31 +15,13 @@ $teacher_text = get_field('teacher_text');
 $teacher_name = get_field('teacher_name');
 ?>
 
-<style>
-    .quick-menu ul {
-        list-style: none;
-        padding-inline-start: 0;
-    }
-
-    .quick-menu ul li {
-        border-bottom: 1px solid #f2ecdf;
-        padding: 13px 0 16px;
-    }
-
-    .quick-menu ul li a {
-        color: #007c93;
-        text-decoration: underline;
-        letter-spacing: 1.1px;
-    }
-</style>
-
 <div class="article article_default">
     <div class="article__sidebar">
 
         <div class="quick-menu quick-menu_default">
             <?php
             $menu = wp_nav_menu([
-                'theme_location' => 'footer-' . $which_menu_display,
+                'theme_location' => 'sidebar-' . $which_menu_display,
                 'container' => false,
             ]);
             ?>

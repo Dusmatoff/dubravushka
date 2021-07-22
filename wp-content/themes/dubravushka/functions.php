@@ -53,12 +53,22 @@ if (!function_exists('dubravushka_setup')) :
             array(
                 'primary' => esc_html__('Главное меню', 'dubravushka'),
                 'footer-copyright' => esc_html__('Футер копирайт', 'dubravushka'),
-                'footer-school' => esc_html__('О ШКОЛЕ', 'dubravushka'),
-                'footer-education' => esc_html__('ОБРАЗОВАНИЕ', 'dubravushka'),
-                'footer-house' => esc_html__('ПАНСИОН', 'dubravushka'),
-                'footer-news' => esc_html__('НОВОСТИ', 'dubravushka'),
-                'footer-admission' => esc_html__('ПОСТУПЛЕНИЕ', 'dubravushka'),
-                'footer-contacts' => esc_html__('КОНТАКТЫ', 'dubravushka'),
+                'footer-school' => esc_html__('Футер О ШКОЛЕ', 'dubravushka'),
+                'footer-education' => esc_html__('Футер ОБРАЗОВАНИЕ', 'dubravushka'),
+                'footer-house' => esc_html__('Футер ПАНСИОН', 'dubravushka'),
+                'footer-news' => esc_html__('Футер НОВОСТИ', 'dubravushka'),
+                'footer-admission' => esc_html__('Футер ПОСТУПЛЕНИЕ', 'dubravushka'),
+                'footer-contacts' => esc_html__('Футер КОНТАКТЫ', 'dubravushka'),
+                'sidebar-school' => esc_html__('Сайдбар О ШКОЛЕ', 'dubravushka'),
+                'sidebar-education' => esc_html__('Сайдбар ОБРАЗОВАНИЕ', 'dubravushka'),
+                'sidebar-house' => esc_html__('Сайдбар ПАНСИОН', 'dubravushka'),
+                'sidebar-admission' => esc_html__('Сайдбар ПОСТУПЛЕНИЕ', 'dubravushka'),
+                'sidebar-camp' => esc_html__('Сайдбар ЛАГЕРЬ', 'dubravushka'),
+                'sidebar-contacts' => esc_html__('Сайдбар КОНТАКТЫ', 'dubravushka'),
+                'sidebar-info' => esc_html__('Сайдбар СВЕДЕНИЯ', 'dubravushka'),
+                'sidebar-news' => esc_html__('Сайдбар НОВОСТИ', 'dubravushka'),
+                'sidebar-news-category' => esc_html__('Сайдбар НОВОСТИ КАТЕГОРИИ', 'dubravushka'),
+                'sidebar-media' => esc_html__('Сайдбар СМИ', 'dubravushka'),
             )
         );
 

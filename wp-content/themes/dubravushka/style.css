@@ -25,3 +25,19 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .current-menu-item {
     font-weight: 700;
 }
+
+.quick-menu ul {
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+.quick-menu ul li {
+    border-bottom: 1px solid #f2ecdf;
+    padding: 13px 0 16px;
+}
+
+.quick-menu ul li a {
+    color: #007c93;
+    text-decoration: underline;
+    letter-spacing: 1.1px;
+}
