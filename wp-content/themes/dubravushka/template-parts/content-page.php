@@ -55,10 +55,12 @@ $teacher_name = get_field('teacher_name');
         if (function_exists('yoast_breadcrumb')) {
             yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
         }
+
+        the_content();
+
+        get_template_part('template-parts/form-bottom');
+
+        get_template_part('template-parts/share-block');
         ?>
-
-        <?php the_content(); ?>
-
-        <?php get_template_part('template-parts/share-block'); ?>
     </div>
 </div>

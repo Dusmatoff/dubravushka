@@ -74,7 +74,9 @@ $news = get_posts(['numberposts' => 8]);
                     <div class="right-content">
                         <div class="form-title-top"><?php echo $form_title; ?></div>
                         <div class="form-title-bottom"><?php echo $form_subtitle; ?></div>
-                        <div class="form-top"><!-- TODO Добавить форму --></div>
+                        <div class="form-top">
+                            <?php echo do_shortcode('[contact-form-7 id="349" title="Оставить заявку"]'); ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -407,7 +409,7 @@ $news = get_posts(['numberposts' => 8]);
 
     <div class="container">
         <div class="home-page form-bottom">
-            <!-- TODO Форма -->
+            <?php get_template_part('template-parts/form-bottom'); ?>
         </div>
         <div class="home-page">
             <?php get_template_part('template-parts/share-block'); ?>

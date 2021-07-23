@@ -61,8 +61,10 @@ $teachers = get_field('vybor_uchitelej_dlya_otobrazheniya');
                     </div>
                 </div>
 
-
-                <?php get_template_part('template-parts/share-block'); ?>
+                <?php
+                get_template_part('template-parts/form-bottom');
+                get_template_part('template-parts/share-block');
+                ?>
             </div>
         </div>
     </div>

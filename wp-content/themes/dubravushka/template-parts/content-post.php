@@ -20,7 +20,10 @@ $annotation = get_field('annotation', get_the_ID());
         <?php echo $annotation; ?>
     </div>
 
-    <?php the_content(); ?>
+    <?php
+    the_content();
+    get_template_part('template-parts/form-bottom');
+    ?>
 <?php else: ?>
     <div class="row news-list-view">
         <div class="col-md-4 col-sm-4">

@@ -61,13 +61,16 @@ get_header();
                         //'base' => $url . '/%_%',
                         //'add_args' => get_query_var('paginationArgs')
                     ]);
+
                     //the_posts_navigation();
+
                     else :
                         get_template_part('template-parts/content', 'none');
                     endif;
                     ?>
                 </ul>
 
+                <?php get_template_part('template-parts/form-bottom'); ?>
             </div>
         </div>
     </div><!-- #main -->
