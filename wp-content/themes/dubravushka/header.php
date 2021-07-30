@@ -111,7 +111,7 @@ echo $scripts_body;
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling-->
                 <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <!-- TODO WP search form -->
+                    <!-- TODO WP search form https://zen.yandex.ru/media/id/5adbba70dcaf8e45d4792598/vstraivaem-poisk-ot-iandeksa-v-wordpress-5b17d027d7bf219ead09dce9 -->
                     <form action="/site/search/" method="get" target="_self" class="serch-wrapper"
                           accept-charset="utf-8">
                         <input type="hidden" name="searchid" value="2293373">

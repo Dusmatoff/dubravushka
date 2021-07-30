@@ -11,8 +11,6 @@ get_header();
 $banner_img = get_field('banner_img');
 $banner_title = get_field('banner_title');
 $banner_subtitle = get_field('banner_subtitle');
-$form_title = get_field('form_title');
-$form_subtitle = get_field('form_subtitle');
 
 $booking = get_field('booking');
 
@@ -72,11 +70,7 @@ $news = get_posts(['numberposts' => 8]);
                 </div>
                 <div class="col-md-4">
                     <div class="right-content">
-                        <div class="form-title-top"><?php echo $form_title; ?></div>
-                        <div class="form-title-bottom"><?php echo $form_subtitle; ?></div>
-                        <div class="form-top">
-                            <?php echo do_shortcode('[contact-form-7 id="349" title="Оставить заявку"]'); ?>
-                        </div>
+                        <?php echo do_shortcode('[contact-form-7 id="349" title="Оставить заявку"]'); ?>
                     </div>
                 </div>
             </div>
