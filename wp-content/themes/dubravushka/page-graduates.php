@@ -14,42 +14,6 @@ $graduates = get_posts([
 ]);
 ?>
 
-    <style>
-        .graduates-caret {
-            position: relative;
-            left: 5px;
-            top: 0;
-            right: 5px;
-            width: 12px;
-            height: 12px;
-            border: 0;
-            margin: 0;
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .graduates-caret:after {
-            content: "";
-            border-top-color: #007c93!important;
-            border-width: 6px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%,-50%);
-            display: block;
-            width: 0;
-            height: 0;
-            border-top: 4px solid #fff;
-            border-right: 4px solid transparent;
-            border-left: 4px solid transparent;
-        }
-
-        .sub-menu {
-            margin-left: 25px;
-            display: none;
-        }
-    </style>
-
     <div class="article-image" style="background-image: url('<?php echo $banner; ?>');"></div>
     <div class="container">
         <div class="article article_default">
@@ -111,12 +75,10 @@ $graduates = get_posts([
             </div>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function (evt) {
             $('.sub-menu').attr('id', 'graduates');
         });
     </script>
-
 <?php
 get_footer();

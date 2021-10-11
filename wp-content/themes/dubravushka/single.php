@@ -21,7 +21,7 @@ $is_graduates_category = in_category(33);
                 <div class="quick-menu quick-menu_default">
                     <?php
                     $menu = wp_nav_menu([
-                        'theme_location' => 'sidebar-news-category',
+                        'theme_location' => $is_graduates_category ?  'sidebar-graduates' : 'sidebar-news-category',
                         'container' => false,
                     ]);
                     ?>
