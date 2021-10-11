@@ -69,6 +69,7 @@ if (!function_exists('dubravushka_setup')) :
                 'sidebar-news' => esc_html__('Сайдбар НОВОСТИ', 'dubravushka'),
                 'sidebar-news-category' => esc_html__('Сайдбар НОВОСТИ КАТЕГОРИИ', 'dubravushka'),
                 'sidebar-media' => esc_html__('Сайдбар СМИ', 'dubravushka'),
+                'sidebar-graduates' => esc_html__('Сайдбар Наши выпускники', 'dubravushka'),
             )
         );
 
