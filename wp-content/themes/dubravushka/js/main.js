@@ -270,34 +270,30 @@ $(document).ready(function () {
         });
     });
 
+    $(".phone-mask").mask("+7 (999) 999-99-99");
 });
 
-function clickTarget(type, city = null, elem = null) {
+function clickTarget(type, city = [], elem = []) {
     switch (type) {
         case 'header':
-            ym(yaCounter44172364.reachGoal('telefon_v_shapke'));
-            ga('send', 'event', 'telefon_v_shapke', 'click');
-
+            ym(44172364, 'reachGoal', 'телефон_в_шапке');
+            ga('send', 'event', 'телефон_в_шапке', 'click');
             break;
         case 'emailPersonal':
             ym(yaCounter44172364.reachGoal('Р°РґСЂРµСЃ_РїРѕС‡С‚С‹_personal'));
             ga('send', 'event', 'Р°РґСЂРµСЃ_РїРѕС‡С‚С‹_personal', 'РєР»РёРє');
-
             break;
         case 'emailSchcool':
             ym(yaCounter44172364.reachGoal('Р°РґСЂРµСЃ_РїРѕС‡С‚С‹_school'));
             ga('send', 'event', 'Р°РґСЂРµСЃ_РїРѕС‡С‚С‹_school', 'РєР»РёРє');
-
             break;
         case 'emailDir':
             ym(yaCounter44172364.reachGoal('Р°РґСЂРµСЃ_РїРѕС‡С‚С‹_director'));
             ga('send', 'event', 'Р°РґСЂРµСЃ_РїРѕС‡С‚С‹_director', 'РєР»РёРє');
-
             break;
         case 'topSearch':
-            ym(yaCounter44172364.reachGoal('poisk'));
+            ym(44172364, 'reachGoal', 'poisk');
             ga('send', 'event', 'poisk', 'click');
-
             break;
         case 'formOnTop':
             if (city.length > 0) {
@@ -309,38 +305,67 @@ function clickTarget(type, city = null, elem = null) {
             }
 
             Comagic.addOfflineRequest({
-                name: $('#application-name').val(),
-                email: $('#application-email').val(),
-                phone: $('#application-phone').val(),
-                message: 'Р—Р°СЏРІРєР° СЃ СЃР°Р№С‚Р° С€РєРѕР»С‹ (С„РѕСЂРјР° РІРІРµСЂС…Сѓ СЃС‚СЂР°РЅРёС†С‹)'
+                name: $('#client-name-top').val(),
+                email: $('#client-email-top').val(),
+                phone: $('#client-phone-top').val(),
+                message: 'Заявка. Класс - ' + $('#children-class-top').val(),
             });
-
             break;
-
         case 'formOnBottom':
             if (city.length > 0) {
                 ym(yaCounter44172364.reachGoal('knopka_otpravit_v_ostalis_voprosy_' + city));
                 ga('send', 'event', 'knopka_otpravit_v_ostalis_voprosy_' + city, 'click');
             } else {
-                ym(yaCounter44172364.reachGoal('knopka_otpravit_v_ostalis_voprosy'));
-                ga('send', 'event', 'knopka_otpravit_v_ostalis_voprosy', 'click');
+                ym(44172364, 'reachGoal', 'телефон_в_форме_ов');
+                ga('send', 'event', 'телефон_в_форме_ов', 'click');
             }
 
             Comagic.addOfflineRequest({
-                name: $('#application-name').val(),
-                email: $('#application-email').val(),
-                phone: $('#application-phone').val(),
-                message: 'Р—Р°СЏРІРєР° СЃ СЃР°Р№С‚Р° С€РєРѕР»С‹ (С„РѕСЂРјР° РІРЅРёР·Сѓ СЃС‚СЂР°РЅРёС†С‹)'
+                name: $('#client-name-bottom').val(),
+                email: $('#client-email-bottom').val(),
+                phone: $('#client-phone-bottom').val(),
+                message: 'Вопрос. Класс - ' + $('#children-class-bottom').val(),
             });
-
             break;
-
         case 'formOnErrorValidate':
             ym(yaCounter44172364.reachGoal('errorform'));
-
             break;
+        case 'reviews':
+            ym(44172364, 'reachGoal', 'смотреть_все_отзывы');
+            ga('send', 'event', 'смотреть_все_отзывы', 'click');
+        case 'krujki':
+            ym(44172364, 'reachGoal', 'кружки_ секции_подробнее');
+            ga('send', 'event', 'кружки_ секции_подробнее', 'click');
+        case 'ekskursii':
+            ym(44172364, 'reachGoal', 'экскурсии_поездки_подробнее');
+            ga('send', 'event', 'экскурсии_поездки_подробнее', 'click');
+        case 'sport':
+            ym(44172364, 'reachGoal', 'спорт_здоровье_подробнее');
+            ga('send', 'event', 'спорт_здоровье_подробнее', 'click');
     }
 
 
     return true;
 }
+
+function directorMailClick() {
+    ym(44172364, 'reachGoal', 'адрес_почты_director');
+    ga('send', 'event', 'адрес_почты_director', 'click');
+}
+
+function schoolMailClick() {
+    ym(44172364, 'reachGoal', 'адрес_почты_school');
+    ga('send', 'event', 'адрес_почты_school', 'click');
+}
+
+$(document).on('click','.dop_btn1',function(e) {
+    clickTarget('krujki');
+});
+
+$(document).on('click','.dop_btn2',function(e) {
+    clickTarget('ekskursii');
+});
+
+$(document).on('click','.dop_btn3',function(e) {
+    clickTarget('sport');
+});

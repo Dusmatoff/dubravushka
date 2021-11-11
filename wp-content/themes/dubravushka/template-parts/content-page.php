@@ -57,7 +57,7 @@ $teacher_name = get_field('teacher_name');
         }
 
         the_content();
-
+        
         get_template_part('template-parts/form-bottom');
 
         get_template_part('template-parts/share-block');

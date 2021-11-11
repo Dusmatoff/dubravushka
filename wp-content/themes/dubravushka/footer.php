@@ -15,6 +15,8 @@ $facebook = get_field('facebook', 'option');
 $instagram = get_field('instagram', 'option');
 $phone = get_field('phone', 'option');
 $address = get_field('address', 'option');
+
+$scripts_body = get_field('scripts_body', 'option');
 ?>
 
 <div class="container-fluid custom-padding padding-mobile-0 padding-tablet-0 bg-theme__autumn">
@@ -125,38 +127,47 @@ $address = get_field('address', 'option');
             </div>
             <hr class="divider bg-theme__autumn visible-xs visible-sm visible-md"/>
             <div class="footer-bottombar__copyright pull-right">
-                <?php echo "$address, $phone"; ?>
+                <?php echo $address; ?> <span class="comagic"><?php echo $phone; ?></span>
             </div>
         </div>
     </div>
 </div>
 </div><!-- #page -->
 
-<?php wp_footer(); ?>
+<?php
+    wp_footer();
+    echo $scripts_body;
+?>
 
-<script>jQuery(function ($) {
-        jQuery('#w0').yiiActiveForm([{
-            "id": "search-text",
-            "name": "text",
-            "container": ".field-search-text",
-            "input": "#search-text",
-            "validate": function (attribute, value, messages, deferred, $form) {
-                yii.validation.string(value, messages, {
-                    "message": "Значение «Text» должно быть строкой.",
-                    "max": 255,
-                    "tooLong": "Значение «Text» должно содержать максимум 255 символов.",
-                    "skipOnEmpty": 1
-                });
-                yii.validation.required(value, messages, {"message": "Необходимо заполнить «Text»."});
-                yii.validation.regularExpression(value, messages, {
-                    "pattern": /^[a-zа-яё0-9\s\-_\(\)\+\.,?]+$/iu,
-                    "not": false,
-                    "message": "Значение «Text» неверно.",
-                    "skipOnEmpty": 1
-                });
-            }
-        }], []);
-    })
+<script>
+    document.addEventListener( 'wpcf7mailsent', function( event ) {
+        if ( '349' == event.detail.contactFormId ) {
+            clickTarget('formOnTop');
+        }
+        
+        if ( '810' == event.detail.contactFormId ) {
+            clickTarget('formOnBottom');
+        }
+        
+        location = 'https://dubravushka.ru/thank-you';
+    }, false );
+    
+    function loadYaShare() {
+        console.log('loadYaShare');
+        const es5shims = document.createElement('script');
+        es5shims.src = '//yastatic.net/es5-shims/0.0.2/es5-shims.min.js';
+        document.getElementsByTagName('head')[0].appendChild(es5shims);
+        
+        const share = document.createElement('script');
+        share.src = '//yastatic.net/share2/share.js';
+        document.getElementsByTagName('head')[0].appendChild(share);
+    }
+    
+    window.addEventListener('load', (event) => {
+        console.log('page is fully loaded');//DOMContentLoaded
+        
+        setTimeout(loadYaShare, 3000);
+    });
 </script>
 
 </body>

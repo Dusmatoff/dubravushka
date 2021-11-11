@@ -47,8 +47,12 @@ $is_graduates_category = in_category(33);
                 ?>
                 <div class="col-xs-12 col-sm-4">
                     <div class="box-item">
-                        <img class="box-item__image img-responsive" src="<?php echo $pic; ?>"
-                             alt="<?php echo $name; ?>">
+                        <?php if($pic): ?>
+                            <img src="<?php echo $pic; ?>"
+                                alt="<?php echo $name; ?>"
+                                class="box-item__image img-responsive"
+                                >
+                        <?php endif; ?>
                         <div class="box-item__title"><?php echo $name; ?></div>
                         <?php if ($medalist): ?>
                             <div class="box-item__sub-title achivement">Медалист</div>

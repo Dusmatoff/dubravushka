@@ -4,7 +4,7 @@ Theme URI: http://underscores.me/
 Author: Dusmatoff
 Author URI: http://dusmatoff.ru/
 Description: Частная школа-пансион «Дубравушка» с проживанием
-Version: 1.0.2
+Version: 1.0.9
 Tested up to: 5.4
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -74,7 +74,7 @@ span.page-numbers {
 
 .graduates-caret:after {
     content: "";
-    border-top-color: #007c93!important;
+    border-bottom-color: #007c93!important;
     border-width: 6px;
     position: absolute;
     left: 50%;
@@ -83,7 +83,7 @@ span.page-numbers {
     display: block;
     width: 0;
     height: 0;
-    border-top: 4px solid #fff;
+    border-bottom: 4px solid #fff;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
 }
@@ -92,3 +92,84 @@ span.page-numbers {
     margin-left: 25px;
     display: none;
 }
+
+#breadcrumbs {
+    color: #777;
+    font-size: 14px;
+}
+
+img.aligncenter {
+    display: block;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 1150px) {
+    #menu-glavnoe-menyu .dropdown-menu {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+}
+
+.graduates-caret.collapsed:after {
+    border-bottom: none!important;
+    border-top-color: #007c93!important;
+    border-top: 4px solid #fff;
+}
+
+.article li {
+    font-size: 17px;
+    font-family: Open Sans;
+    color: #181818;
+    line-height: 1.8;
+}
+
+.wpcf7-submit {
+    cursor: pointer!important;
+}
+
+@media screen and (max-width: 1150px) {
+    .ya-site-form {
+        display: none!important;
+    }
+}
+
+.wpcf7 .ajax-loader{
+ display: block;
+}
+/*
+#ya-site-form0 {
+    width: 100%;
+    font-family: Open Sans;
+    border: 1px solid #ccc;
+    color: #ccc!important;
+    border-radius: 15px;
+}
+
+.ya-site-form__input-text {
+    border: 0!important;
+}
+
+#ya-site-form0 .ya-site-form__submit_type_image {
+    background: url(https://dubravushka.ru/wp-content/themes/dubravushka/images/icon-search.png) no-repeat!important;
+}
+
+#ya-site-form0 .ya-site-form__form * {
+    font-size: 14px !important;
+}
+
+#ya-site-form0 .ya-site-form__search-input {
+    padding: 4px!important;
+}
+
+#ya-site-form0 .ya-site-form__submit_type_image {
+    width: 20px!important;
+    height: 20px!important;
+    margin-top: 5px!important;
+}
+
+.topbar__search-wrapper {
+    margin-top: 0!important;
+    display: flex;
+    align-items: center;
+}
+*/

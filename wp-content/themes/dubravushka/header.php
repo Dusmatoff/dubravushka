@@ -10,7 +10,6 @@
  */
 
 $scripts_head = get_field('scripts_head', 'option');
-$scripts_body = get_field('scripts_body', 'option');
 $head_title = get_field('head_titile', 'option');
 $phone = get_field('phone', 'option');
 $logo = get_field('logo', 'option');
@@ -32,7 +31,6 @@ $logo = get_field('logo', 'option');
 <body <?php body_class(); ?>>
 <?php
 wp_body_open();
-echo $scripts_body;
 ?>
 <div id="page">
     <header class="header">
@@ -42,31 +40,97 @@ echo $scripts_body;
                     <div class="topbar__content"><?php echo $head_title; ?></div>
                     <div class="topbar__search-wrapper">
                         <!-- <a href="/general" class="topbar__uk-flag pull-right"><img src="/images/flags/uk.png" alt="uk-flag"></a> -->
-                        <a class="topbar__phone google__phone"
+                        <a class="topbar__phone google__phone comagic"
                            href="tel:<?php echo $phone; ?>"
                            onclick="clickTarget('header')">
                             <?php echo $phone; ?>
                         </a>
-                        <!-- TODO WP search form -->
-                        <div class="topbar__input ya-site-form ya-site-form_inited_no"
-                             onclick="return {'action':'https://dubravushka.ru','arrow':false}">
-                            <form id="w0" action="/" method="post">
-                                <input type="hidden" name="_csrf"
-                                       value="Ok_XsPbSa-V440uNXZ41dlZp5GTs4Z-vkh7yXORV2PJrKqThv7ooqi6FLekZwWc1HlGlBdSL99e_dYs7lBe6qw==">
-                                <input type="hidden" id="search-searchid" name="Search[searchid]" value="2293373">
-                                <input type="hidden" id="search-l10n" name="Search[l10n]" value="ru"> <input
-                                        type="hidden" id="search-reqenc" name="Search[reqenc]" value="">
-                                <input type="text" id="search-text" class="topbar__search" name="Search[text]"
-                                       placeholder="Поиск" aria-required="true">
-                                <button type="submit" class="topbar__search-btn"
-                                        onclick="clickTarget(&quot;topSearch&quot;)">
-                                    Поиск
-                                </button>
+                        
+                        
+                        
+                        
+                        
+                        <div
+    class="topbar__input ya-site-form ya-site-form_inited_no"
+    onclick="return {'action':'https://dubravushka.ru/search/','arrow':false}"
+>
+    <form id="w0" action="https://dubravushka.ru/search/" method="get">
+        <input type="hidden" name="searchid" value="2507853" />
+        <input type="hidden" name="l10n" value="ru"/>
+        <input type="hidden" name="reqenc" value="" />
+        <input type="search" name="text" value="" class="topbar__search" placeholder="Поиск"/>
+        <button
+            type="submit"
+            class="topbar__search-btn"
+            onclick='clickTarget("topSearch")'
+        >
+            Поиск
+        </button>
+    </form>
+</div>
+<script type="text/javascript">
+    (function (w, d, c) {
+        var s = d.createElement('script'),
+            h = d.getElementsByTagName('script')[0],
+            e = d.documentElement;
+        if ((' ' + e.className + ' ').indexOf(' ya-page_js_yes ') === -1) {
+            e.className += ' ya-page_js_yes';
+        }
+        s.type = 'text/javascript';
+        s.async = true;
+        s.charset = 'utf-8';
+        s.src =
+            (d.location.protocol === 'https:' ? 'https:' : 'http:') +
+            '//site.yandex.net/v2.0/js/all.js';
+        h.parentNode.insertBefore(s, h);
+        (w[c] || (w[c] = [])).push(function () {
+            Ya.Site.Form.init();
+        });
+    })(window, document, 'yandex_site_callbacks');
+</script>
+                        <!--
+                       <div
+                            class="ya-site-form ya-site-form_inited_no"
+                            data-bem='{"action":"https://dubravushka.ru/search","arrow":false,"bg":"transparent","fontsize":12,"fg":"#000000","language":"ru","logo":"rb","publicname":"Поиск по сайту","suggest":true,"target":"_self","tld":"ru","type":3,"usebigdictionary":true,"searchid":2507853,"input_fg":"#000000","input_bg":"#ffffff","input_fontStyle":"normal","input_fontWeight":"normal","input_placeholder":"Поиск","input_placeholderColor":"#000000","input_borderColor":"#7f9db9"}'
+                        >
+                            <form
+                                action="https://yandex.ru/search/site/"
+                                method="get"
+                                target="_self"
+                                accept-charset="utf-8"
+                            >
+                                <input type="hidden" name="searchid" value="2507853" /><input
+                                    type="hidden"
+                                    name="l10n"
+                                    value="ru"
+                                /><input type="hidden" name="reqenc" value="" /><input
+                                    type="search"
+                                    name="text"
+                                    value=""
+                                /><input type="submit" value="Найти" />
                             </form>
                         </div>
+                        <style type="text/css">
+                            .ya-page_js_yes .ya-site-form_inited_no {
+                                display: none;
+                            }
+                            .ya-site-form {
+                                max-width: 158px;
+                                display: inline-block;
+                            }
+                            .ya-site-form__input-text {
+                                padding-left: 13px;
+                                padding-right: 23px;
+                                width: 100%;
+                                font-size: 15px;
+                                color: #ccc;
+                                border-radius: 15px;
+                            }
+                        </style>
                         <script type="text/javascript">
                             (function (w, d, c) {
-                                var s = d.createElement('script'), h = d.getElementsByTagName('script')[0],
+                                var s = d.createElement('script'),
+                                    h = d.getElementsByTagName('script')[0],
                                     e = d.documentElement;
                                 if ((' ' + e.className + ' ').indexOf(' ya-page_js_yes ') === -1) {
                                     e.className += ' ya-page_js_yes';
@@ -74,13 +138,17 @@ echo $scripts_body;
                                 s.type = 'text/javascript';
                                 s.async = true;
                                 s.charset = 'utf-8';
-                                s.src = (d.location.protocol === 'https:' ? 'https:' : 'http:') + '//site.yandex.net/v2.0/js/all.js';
+                                s.src =
+                                    (d.location.protocol === 'https:' ? 'https:' : 'http:') +
+                                    '//site.yandex.net/v2.0/js/all.js';
                                 h.parentNode.insertBefore(s, h);
                                 (w[c] || (w[c] = [])).push(function () {
-                                    Ya.Site.Form.init()
-                                })
+                                    Ya.Site.Form.init();
+                                });
                             })(window, document, 'yandex_site_callbacks');
                         </script>
+                        -->
+                        
                     </div>
                 </div>
             </div>
@@ -111,17 +179,6 @@ echo $scripts_body;
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling-->
                 <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <!-- TODO WP search form https://zen.yandex.ru/media/id/5adbba70dcaf8e45d4792598/vstraivaem-poisk-ot-iandeksa-v-wordpress-5b17d027d7bf219ead09dce9 -->
-                    <form action="/site/search/" method="get" target="_self" class="serch-wrapper"
-                          accept-charset="utf-8">
-                        <input type="hidden" name="searchid" value="2293373">
-                        <input type="hidden" name="l10n" value="ru">
-                        <input type="hidden" name="reqenc" value="">
-                        <input class="topbar__search topbar__search_in-burger" type="search" name="text"
-                               placeholder="Поиск"
-                               value="">
-                        <button class="search-btn">Поиск</button>
-                    </form>
                     <?php
                     wp_nav_menu([
                         'theme_location' => 'primary',

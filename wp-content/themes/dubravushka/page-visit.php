@@ -1,6 +1,6 @@
 <?php
 /*
-	Template Name: Главная страница
+	Template Name: Visit
 */
 
 // Exit if accessed directly.
@@ -11,41 +11,8 @@ get_header();
 $banner_img = get_field('banner_img');
 $banner_title = get_field('banner_title');
 $banner_subtitle = get_field('banner_subtitle');
-$utm_banner = get_field('utm_banner');
-if (!empty($_GET) && $utm_banner){
-    foreach( $_GET as $param => $value ) {
-        foreach ($utm_banner as $row){
-            if ($row['utm_campaign_banner'] == $param.'='.$value){
-                $banner_title = $row['utm_title_banner'];
-                $banner_subtitle = $row['utm_subtitle_banner'];
-            }
-        }
-    }
-}
-
-$feature_list = get_field('feature_list');
-$utm_feature = get_field('utm_feature');
-if (!empty($_GET) && $utm_feature){
-    foreach( $_GET as $param => $value ) {
-        foreach ($utm_feature as $row){
-            if ($row['utm_campaign_feature'] == $param.'='.$value){
-                $feature_list = $row['utm_text_feature'];
-            }
-        }
-    }
-}
 
 $booking = get_field('booking');
-$utm_booking = get_field('utm_booking');
-if (!empty($_GET) && $utm_booking){
-    foreach( $_GET as $param => $value ) {
-        foreach ($utm_booking as $row){
-            if ($row['utm_campaign_booking'] == $param.'='.$value){
-                $booking = $row['utm_text_booking'];
-            }
-        }
-    }
-}
 
 $about = get_field('about');
 $id_youtube = get_field('id_youtube');
@@ -110,11 +77,21 @@ $news = get_posts(['numberposts' => 8]);
         </div>
     </div>
 
+<?php if (have_rows('feature_list')): ?>
     <div class="container global">
         <div class="class-list">
-            <?php echo $feature_list; ?>
+            <ul>
+                <?php
+                while (have_rows('feature_list')) :
+                    the_row();
+                    $text = get_sub_field('text');
+                    ?>
+                    <li><?php echo $text; ?></li>
+                <?php endwhile; ?>
+            </ul>
         </div>
     </div>
+<?php endif; ?>
 
     <div class="container global">
         <div class="banner-text">
@@ -223,7 +200,7 @@ $news = get_posts(['numberposts' => 8]);
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <a class="look-all" href="<?php echo $review_btn_link; ?>" onclick="clickTarget('reviews');">
+                <a class="look-all" href="<?php echo $review_btn_link; ?>">
                     <?php echo $review_btn_text; ?>
                 </a>
             </div>
@@ -311,7 +288,6 @@ $news = get_posts(['numberposts' => 8]);
                     $title = get_sub_field('title');
                     $text = get_sub_field('text');
                     $link = get_sub_field('link');
-                    $index = get_row_index();
                     ?>
                     <div class="col-md-4">
                         <div class="dopobrazovanie__item">
@@ -323,7 +299,7 @@ $news = get_posts(['numberposts' => 8]);
                                 <?php echo $text; ?>
                             </p>
 
-                            <a class="dopobrazovanie__btn dop_btn<?php echo $index; ?>" href="<?php echo $link; ?>" target="_blank">
+                            <a class="dopobrazovanie__btn" href="<?php echo $link; ?>" target="_blank">
                                 Подробнее
                             </a>
                         </div>

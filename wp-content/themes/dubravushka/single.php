@@ -30,9 +30,19 @@ $is_graduates_category = in_category(33);
 
             <div class="article__content">
                 <?php
-                if (function_exists('yoast_breadcrumb')) {
+                if (function_exists('yoast_breadcrumb') && !$is_graduates_category) {
                     yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
                 } ?>
+                
+                <?php if($is_graduates_category): ?>
+                    <p id="breadcrumbs">
+                        <span>
+                            <span>
+                                <a href="/">Главная</a> » <span><a href="/graduates/">Наши выпускники</a> » <span class="breadcrumb_last" aria-current="page"><?php the_title(); ?></span></span>
+                            </span>
+                        </span>
+                    </p>
+                <?php endif; ?>
 
                 <?php
                 while (have_posts()) :
