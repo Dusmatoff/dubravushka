@@ -4,7 +4,7 @@ Theme URI: http://underscores.me/
 Author: Dusmatoff
 Author URI: http://dusmatoff.ru/
 Description: Частная школа-пансион «Дубравушка» с проживанием
-Version: 1.0.9
+Version: 1.0.10
 Tested up to: 5.4
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -134,8 +134,22 @@ img.aligncenter {
 }
 
 .wpcf7 .ajax-loader{
- display: block;
+    display: block;
 }
+
+@media (max-width: 744px) {
+    .school__form .topbar__phone {
+        display: inline;
+        color: #006379;
+        margin: 0;
+        float: none;
+    }
+
+    .school__form p {
+        font-size: 16px;
+    }
+}
+
 /*
 #ya-site-form0 {
     width: 100%;

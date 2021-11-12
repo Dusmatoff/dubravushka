@@ -9,7 +9,7 @@
 
 if (!defined('_S_VERSION')) {
     // Replace the version number of the theme on each release.
-    define('_S_VERSION', '1.0.9');
+    define('_S_VERSION', '1.0.10');
 }
 
 if (!function_exists('dubravushka_setup')) :
@@ -171,7 +171,7 @@ function dubravushka_scripts()
         wp_deregister_script('jquery');
     }
     wp_enqueue_script('dubravushka-jquery', get_template_directory_uri() . '/js/jquery.min.js', [], '2.2.4', true);
-    //wp_enqueue_script('dubravushka-yii', get_template_directory_uri() . '/js/yii.js', [], '2', true);//TODO Проверить сайт без этого скрипта
+    //wp_enqueue_script('dubravushka-yii', get_template_directory_uri() . '/js/yii.js', [], '2', true);
     wp_enqueue_script('dubravushka-libraries', get_template_directory_uri() . '/js/libraries.js', [], _S_VERSION, true);
     wp_enqueue_script('dubravushka-lightbox', get_template_directory_uri() . '/js/lightbox.js', [], '2.9.0', true);
     wp_enqueue_script('dubravushka-jquery-validate', get_template_directory_uri() . '/js/jquery.validate.min.js', [], '1.17.0', true);
@@ -277,7 +277,7 @@ add_filter( 'manage_page_posts_columns', 'dubravushka_page_columns' );
 function dubravushka_page_columns( $post_columns ){
     unset( $post_columns['author'] );
     unset( $post_columns['comments'] );
-	
+
 	return array_slice( $post_columns, 0, 2 ) + ['page_url' => 'URL'] + $post_columns;
 }
 
@@ -293,7 +293,7 @@ add_filter( 'manage_post_posts_columns', 'dubravushka_post_columns' );
 function dubravushka_post_columns( $post_columns ){
     unset( $post_columns['author'] );
     unset( $post_columns['comments'] );
-	
+
 	return array_slice( $post_columns, 0, 2 ) + ['page_url' => 'URL'] + $post_columns;
 }
 
